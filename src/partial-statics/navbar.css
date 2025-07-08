@@ -1,0 +1,23 @@
+.container{
+    /* position: fixed; */
+    top: 0;
+    margin: 0 auto;
+    display: flex;
+    /* width: 80%; */
+    justify-content: space-around;
+    align-items: center;
+    color: black;
+    height: 10vh;
+    
+    /* border: 2px solid black; */
+}
+
+.bigger{
+    background-color: white;
+    /* position:absolute; */
+    z-index: 99;
+}
+
+
+
+
