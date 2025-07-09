@@ -1,13 +1,19 @@
-import { Tooltip as ChakraTooltip, Portal } from "@chakra-ui/react"
+"use client"
+
+import {
+  Tooltip as ArkTooltip,
+  type UseTooltipProps as ArkUseTooltipProps,
+} from "@ark-ui/react/tooltip"
+import { Portal } from "@ark-ui/react"
 import * as React from "react"
 
-export interface TooltipProps extends ChakraTooltip.RootProps {
+export interface TooltipProps extends ArkUseTooltipProps {
   showArrow?: boolean
   portalled?: boolean
   portalRef?: React.RefObject<HTMLElement>
   content: React.ReactNode
-  contentProps?: ChakraTooltip.ContentProps
   disabled?: boolean
+  children: React.ReactNode
 }
 
 export const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
@@ -18,29 +24,28 @@ export const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
       disabled,
       portalled = true,
       content,
-      contentProps,
       portalRef,
       ...rest
     } = props
 
-    if (disabled) return children
+    if (disabled) return children as React.ReactElement
 
     return (
-      <ChakraTooltip.Root {...rest}>
-        <ChakraTooltip.Trigger asChild>{children}</ChakraTooltip.Trigger>
+      <ArkTooltip.Root {...rest}>
+        <ArkTooltip.Trigger asChild>{children}</ArkTooltip.Trigger>
         <Portal disabled={!portalled} container={portalRef}>
-          <ChakraTooltip.Positioner>
-            <ChakraTooltip.Content ref={ref} {...contentProps}>
+          <ArkTooltip.Positioner>
+            <ArkTooltip.Content ref={ref}>
               {showArrow && (
-                <ChakraTooltip.Arrow>
-                  <ChakraTooltip.ArrowTip />
-                </ChakraTooltip.Arrow>
+                <ArkTooltip.Arrow>
+                  <ArkTooltip.ArrowTip />
+                </ArkTooltip.Arrow>
               )}
               {content}
-            </ChakraTooltip.Content>
-          </ChakraTooltip.Positioner>
+            </ArkTooltip.Content>
+          </ArkTooltip.Positioner>
         </Portal>
-      </ChakraTooltip.Root>
+      </ArkTooltip.Root>
     )
   },
 )

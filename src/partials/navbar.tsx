@@ -1,5 +1,5 @@
-import { Button, Menu, MenuList, MenuItem, Box, Flex, HStack, Image, DrawerOverlay, DrawerCloseButton, DrawerBody, DrawerHeader, Drawer, Portal, useDisclosure, DrawerContent } from '@chakra-ui/react'
-import { IoIosArrowRoundForward } from "react-icons/io";
+import { Button, Box, Flex, HStack, Image, DrawerOverlay, DrawerCloseButton, DrawerBody, DrawerHeader, Drawer, useDisclosure, DrawerContent } from '@chakra-ui/react'
+
 
 const Navbar = () => {
     const style = {
