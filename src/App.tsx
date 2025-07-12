@@ -10,7 +10,6 @@ import Loader from './partials/Loader'
 import { useEffect, useRef, useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import {useNavigate } from 'react-router-dom'
-import {Flex,Image} from '@chakra-ui/react'
 
 function App() {
   return (
@@ -21,8 +20,8 @@ function App() {
 }
 
 function AppS() {
-  const aboutRef = useRef(null);
-  const reserveRef = useRef(null);
+  const aboutRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
+  const reserveRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
   const navigate = useNavigate();
 
   const scrollToAbout = () => {
@@ -39,7 +38,7 @@ function AppS() {
     setTimeout(() => {
 
       if (reserveRef.current) {
-        (reserveRef.current as HTMLElement).scrollIntoView({behavior: 'smooth'})
+        reserveRef.current.scrollIntoView({behavior: 'smooth'})
       }
     },0)
   }
@@ -51,7 +50,14 @@ function AppS() {
     return () => clearTimeout(timer);
   }, []);
 
-  const Homepage = ({scrollToReserve, scrollToAbout, aboutRef, reserveRef}) => (
+  type HomepageProps = {
+    scrollToReserve: () => void;
+    scrollToAbout: () => void;
+    aboutRef: React.RefObject<HTMLDivElement>;
+    reserveRef: React.RefObject<HTMLDivElement>;
+  };
+
+  const Homepage: React.FC<HomepageProps> = ({scrollToReserve, scrollToAbout, aboutRef, reserveRef}) => (
     <>
       <Navbar onClickAbout={scrollToAbout} onClickReserve={scrollToReserve} />
       <HeroSection />
@@ -63,7 +69,12 @@ function AppS() {
     </>
   )
 
-  const Menu = ({scrollToReserve, scrollToAbout}) => (
+  type MenuProps = {
+    scrollToReserve: () => void;
+    scrollToAbout: () => void;
+  };
+
+  const Menu: React.FC<MenuProps> = ({scrollToReserve, scrollToAbout}) => (
     <>
       <Navbar onClickAbout={scrollToAbout} onClickReserve={scrollToReserve} />
       <MainMenu />

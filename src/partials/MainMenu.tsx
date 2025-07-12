@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import { Box, Flex , Heading, Image ,chakra,shouldForwardProp, Spinner, Text} from '@chakra-ui/react';
-import {motion, transform,isValidMotionProp} from 'framer-motion'
+import {motion,isValidMotionProp} from 'framer-motion'
 
 const MainMenu = () => {
   const [displayItems, setDisplayItems] = useState<any[]>([]);
@@ -90,7 +90,7 @@ const MainMenu = () => {
 
             <Flex flexWrap="wrap" justifyContent="center" alignItems="center">
               {displayItems.map((item) => (
-                <MotionBox p={4} borderWidth={1} borderRadius="md" boxShadow="md" key={item.name} w='300px' m={2} sx={{ textAlign: 'center' }} whileFocus={{scale: 1.05}} transition={{duration : 0.2}} animate={{scale: 1}}>
+                <MotionBox p={4} borderWidth={1} borderRadius="md" boxShadow="md" key={item.name} w='300px' m={2} sx={{ textAlign: 'center' }} whileFocus={{scale: 1.05}} animate={{scale: 1}}>
                   <Image src='https://images.pexels.com/photos/19902252/pexels-photo-19902252.jpeg' width='300px' height='300px'></Image>
                   <Heading fontSize='20px'>{item.name}</Heading>
                   <p>{item.description}</p>
