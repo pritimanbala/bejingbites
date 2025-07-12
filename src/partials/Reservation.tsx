@@ -1,9 +1,15 @@
 import { Box, Flex, Heading, Text } from "@chakra-ui/react"
 import "../partial-statics/reservation.css"
 
-const Reservation = () => {
+import type{ RefObject } from "react"
+
+interface ReservationProps {
+    reserveRef: RefObject<HTMLDivElement>;
+}
+
+const Reservation = ({ reserveRef }: ReservationProps) => {
     return (
-        <Box
+        <Box ref={reserveRef}
             bg='url("https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg")'
             h='fit-content'
             backgroundPosition='center'

@@ -1,4 +1,5 @@
-import { Flex, Heading, Image, Text, Button } from '@chakra-ui/react'
+import { Flex, Heading, Image, Text, Button} from '@chakra-ui/react'
+import {Link} from 'react-router-dom'
 
 const HeroSection = () => {
     
@@ -26,7 +27,7 @@ const HeroSection = () => {
             >
                 A Taste of Beijing, Served with Elegance
             </Text>
-            <Button variant='outline' colorScheme='yellow' mt={4}>Explore Menu</Button>
+            <Button variant='outline' colorScheme='yellow' mt={4} as={Link} to="/menu">Explore Menu</Button>
         </Flex>
 
     )

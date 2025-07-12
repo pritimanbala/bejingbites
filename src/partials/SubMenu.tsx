@@ -14,9 +14,9 @@ const SubMenu = () => {
     },
   ]
   return (
-    <Box bg='rgba(214, 172, 20, 0.1)'>
-      <Heading w='100%' textAlign='center' fontFamily="'Playfair Display', serif" fontSize='clamp(3rem, 2vh, 5rem)' py={7}>OUR MENU</Heading>
-      <Flex direction='row' justify='center' align='center' w='100%' p={4} gap={5} >
+    <Box bg='rgba(214, 172, 20, 0.1)' minH='500px'>
+      <Heading w='100%' textAlign='center' fontFamily="'Playfair Display', serif" fontSize='clamp(3rem, 2vh, 5rem)' py={7} >OUR MENU</Heading>
+      <Flex direction='row' justify='center' align='center' flexWrap='wrap' w='100%' p={4} gap={5} >
         {items.map((details, index) => (
           <Box key={index} border='1px solid black' zIndex={99} textAlign='center' flexWrap='wrap' maxW='300px' w={{ base: "100%", sm: "80%", md: "45%", lg: "30%" }} transition='all 0.25s ease-in-out'
             sx={{

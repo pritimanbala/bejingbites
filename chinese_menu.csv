@@ -1,0 +1,46 @@
+name,description,price,type,category
+Spring Rolls,Crispy fried rolls filled with vegetables or meat.,4.99,veg,starters
+Wontons,"Dumplings filled with minced pork or shrimp, steamed or fried.",5.99,non-veg,starters
+Cucumber Salad,"Chilled cucumber tossed with garlic, sesame oil, and vinegar.",3.99,veg,starters
+Hot and Sour Soup,"Spicy and tangy soup with mushrooms, tofu, and bamboo shoots.",4.49,veg,starters
+Chicken Corn Soup,Smooth soup with shredded chicken and sweet corn.,4.79,non-veg,starters
+Crab Rangoon,Fried wontons filled with crab meat and cream cheese.,6.49,non-veg,starters
+Edamame with Sea Salt,Steamed soybeans sprinkled with sea salt.,3.49,veg,starters
+Tofu Skewers,Grilled tofu skewers with sesame and scallions.,4.99,veg,starters
+Chili Oil Dumplings,Boiled dumplings topped with spicy chili oil.,5.49,non-veg,starters
+Steamed Shrimp Shumai,Open-topped shrimp dumplings steamed to perfection.,6.29,non-veg,starters
+Cold Noodles with Sesame Sauce,Chilled noodles served in a creamy sesame sauce.,5.29,veg,starters
+Lotus Root Chips,"Thin crispy slices of lotus root, lightly salted.",3.99,veg,starters
+Szechuan Pickled Vegetables,Tangy and spicy preserved vegetables.,2.99,veg,starters
+Spicy Seaweed Salad,"Thin seaweed tossed with vinegar, garlic, and chili.",3.79,veg,starters
+Mini Bao Buns,Small fluffy steamed buns with savory pork filling.,5.99,non-veg,starters
+Kung Pao Chicken,"Stir-fried chicken with peanuts, vegetables, and chili peppers.",9.99,non-veg,mainCourse
+Sweet and Sour Pork,Crispy pork in a tangy sweet sauce with pineapple and peppers.,10.49,non-veg,mainCourse
+Vegetable Chow Mein,Stir-fried noodles with fresh vegetables and soy sauce.,7.99,veg,mainCourse
+Mapo Tofu,Silken tofu in a spicy Sichuan sauce with minced pork.,8.99,non-veg,mainCourse
+Yangzhou Fried Rice,"Classic fried rice with shrimp, eggs, peas, and ham.",7.49,non-veg,mainCourse
+Beef and Broccoli,Tender beef slices stir-fried with fresh broccoli in oyster sauce.,10.99,non-veg,mainCourse
+Szechuan Eggplant,Eggplant in spicy garlic sauce.,8.49,veg,mainCourse
+Orange Chicken,Crispy chicken tossed in a sweet citrusy glaze.,9.89,non-veg,mainCourse
+Char Siu Pork,Cantonese-style roasted pork with a sweet soy glaze.,10.59,non-veg,mainCourse
+General Tso's Chicken,Spicy-sweet fried chicken dish popular in American-Chinese cuisine.,9.99,non-veg,mainCourse
+Peking Duck,"Roast duck with crispy skin, served with pancakes and hoisin sauce.",14.99,non-veg,mainCourse
+Spicy Dry Pot,Mixed meats and vegetables stir-fried with chili and Szechuan peppercorns.,12.49,non-veg,mainCourse
+Steamed Fish with Ginger and Scallions,Whole fish steamed with fresh herbs and light soy sauce.,13.99,non-veg,mainCourse
+Dan Dan Noodles,Spicy Sichuan noodles with minced pork and chili oil.,8.49,non-veg,mainCourse
+Stir-fried Tofu and Bok Choy,Fresh tofu and bok choy stir-fried in a light garlic sauce.,7.99,veg,mainCourse
+Sesame Balls,Fried glutinous rice balls filled with red bean paste.,3.99,veg,desserts
+Mango Pudding,Sweet mango pudding topped with cream.,4.29,veg,desserts
+Almond Jelly,Chilled almond-flavored jelly with fruit cocktail.,4.59,veg,desserts
+Lychee Ice Cream,Creamy lychee-flavored ice cream.,3.99,veg,desserts
+Fortune Cookies,Crispy cookies with fun fortunes inside.,1.99,veg,desserts
+Red Bean Cake,Sweet cake with a red bean paste filling.,3.49,veg,desserts
+Snow Skin Mooncake,Soft chilled mooncake with custard filling.,4.99,veg,desserts
+Banana Fritters,Deep-fried bananas coated in sweet syrup.,4.29,veg,desserts
+Coconut Jelly,Refreshing jelly made with coconut milk.,3.99,veg,desserts
+Fried Milk Custard,"Milk-based custard, battered and deep-fried.",4.59,veg,desserts
+Sticky Rice Balls in Ginger Syrup,Chewy rice balls in a warm ginger syrup.,4.19,veg,desserts
+Taro Balls,Sweet and chewy taro-based dessert balls.,4.49,veg,desserts
+Sweet Egg Tart,Mini tart with a creamy egg custard center.,3.79,veg,desserts
+Mung Bean Cake,Dense cake made with mung beans and sugar.,3.89,veg,desserts
+Lotus Seed Paste Pastry,Flaky pastry filled with smooth lotus seed paste.,4.79,veg,desserts

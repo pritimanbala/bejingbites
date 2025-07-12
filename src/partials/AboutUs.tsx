@@ -1,10 +1,18 @@
 import { Flex, Image, Container, Heading, Text, Button, Box } from "@chakra-ui/react"
 
 
-const AboutUs = () => {
+import type { RefObject } from "react";
+
+interface AboutUsProps {
+    aboutRef: RefObject<HTMLDivElement>;
+}
+
+const AboutUs = (
+    { aboutRef }: AboutUsProps
+) => {
     return (
-        <Box>
-            <Flex
+        <Box ref={aboutRef}>
+            <Flex 
             direction={{base: 'column', md: 'row'}}
             align='center'
             justify='center'
