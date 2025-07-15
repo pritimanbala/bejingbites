@@ -6,101 +6,112 @@ import {
   MenuList,
   MenuItem,
   Button,
+  Container
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
-import { Box, Flex , Heading, Image ,chakra,shouldForwardProp, Spinner, Text} from '@chakra-ui/react';
-import {motion,isValidMotionProp} from 'framer-motion'
+import { Box, Flex, Heading, Image, Spinner, Text } from '@chakra-ui/react';
+import changeTheme from './logics/changeTheme';
 
-const MainMenu = () => {
+interface MainMenuProps {
+  theme: string;
+  menuItem: string;
+  setMenuItem: (menuItem: string) => void;
+}
+
+const MainMenu = ({ theme, setMenuItem, menuItem }: MainMenuProps) => {
   const [displayItems, setDisplayItems] = useState<any[]>([]);
-  const [starter, setStarter] = useState<any[]>([]);
-  const [mainCourse, setMainCourse] = useState<any[]>([]);
-  const [dessert, setDessert] = useState<any[]>([]);
+  const [title, setTitle] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
-  const [menuItems, setItems] = useState<any[]>([]);
-  const [item, setItem] = useState<any>('Our Exclusive Menu');
-  const MotionBox = chakra(motion.div, {
-  shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
-});
+  const [pageLoad, setPageLoad] = useState<boolean>(true);
   useEffect(() => {
+    let isMount = true
     const fetchData = async () => {
-      const { data, error } = await supabase
-        .from('menu')
-        .select('*')
-        .order('name');
-      if (error) {
-        console.error('Error fetching menu items:', error);
-      } else if (!data || data.length === 0) {
-        console.log('No menu items found');
-        setItems([]);
-        setDisplayItems([]);
+      if(pageLoad && isMount){
+        const { data, error } = await supabase
+          .from('menu')
+          .select('*')
+          .order('name');
+        if (error) {
+          console.error('Error fetching menu items:', error);
+        } else if (!data || data.length === 0) {
+          console.log('No menu items found');
+          setDisplayItems([]);
+        }
+        else {
+          console.log('page reloaded')
+          console.log('Fetched Menu Items:', data);
+          const starters = data.filter(item => item.category === 'starters');
+          const mainCourses = data.filter(item => item.category === 'mainCourse');
+          const desserts = data.filter(item => item.category === 'desserts');
+          if(menuItem === 'starters'){
+            setDisplayItems(starters);
+          } else if(menuItem === 'mainCourse'){
+            setDisplayItems(mainCourses);
+          } else{
+            setDisplayItems(desserts);
+          } 
+  
+          console.log('Categorized Menu Items:', { starters, mainCourses, desserts });
+        }
+        console.log('Menu Items:', menuItem);
+        // Set loading to false after fetching data
+        if(isMount){
+          setLoading(false);
+          setPageLoad(false);
+        }
       }
-      else {
-        console.log('Fetched Menu Items:', data);
-        setItems(data);
-        setDisplayItems(data);
-      }
-      console.log('Menu Items:', menuItems);
-      // Set loading to false after fetching data
-      setLoading(false);
     }
     fetchData();
-  }, []);
-
-  const categorizeMenuItems = () => {
-    const starters = menuItems.filter(item => item.category === 'starters');
-    const mainCourses = menuItems.filter(item => item.category === 'mainCourse');
-    const desserts = menuItems.filter(item => item.category === 'desserts');
-    setStarter(starters);
-    setMainCourse(mainCourses);
-    setDessert(desserts);
-    console.log('Categorized Menu Items:', { starters, mainCourses, desserts });
-  }
-
-  useEffect(() => {
-    if (menuItems.length > 0) {
-      categorizeMenuItems();
+    if(menuItem === 'starters'){
+      setTitle('STARTERS')
+    }else if(menuItem === 'mainCourse'){
+      setTitle('MAIN COURSE')
+    }else{
+      setTitle('DESSERTS')
     }
-  }, [menuItems]);
+
+
+    return () => {isMount = false}
+  }, [pageLoad]);
+
   return (
     <>
-      {loading && <Flex direction="column" justify="center" align="center" height="100vh">
-    <Spinner size="xl" thickness="4px" color="teal.400" mb={4} />
-    <Text fontSize="lg" color="gray.500">Loading menu items...</Text>
-  </Flex>}
+      {loading && <Flex sx={changeTheme(theme)} direction="column" justify="center" align="center" height="100vh">
+        <Spinner size="xl" thickness="4px" color="teal.400" mb={4} />
+        <Text fontSize="lg" color="gray.500">Loading menu items...</Text>
+      </Flex>}
       {!loading && (
-        <Box mt='10vh'>
+        <Box mt='10vh' sx={changeTheme(theme)} minH='100vh'>
+          <Container mx='auto' textAlign='center' py={6}>
+            <Heading fontSize='5xl'>{title}</Heading>
+          </Container>
           <Flex w='95%' justify='space-between' align='center' mx='auto' py={5}>
-
-          <Heading>{item}</Heading>
-          <Menu>
-            <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-              Menu
-            </MenuButton>
-
-            <MenuList>
-              <MenuItem onClick={() => {setDisplayItems(starter); setItem('Starters');}}>Starter</MenuItem>
-              <MenuItem onClick={() => {setDisplayItems(mainCourse); setItem('Main Course');}}>Main Course</MenuItem>
-              <MenuItem onClick={() => {setDisplayItems(dessert); setItem('Dessert');}}>Dessert</MenuItem>
-              <MenuItem onClick={() => {setDisplayItems(menuItems); setItem('All');}}>All</MenuItem>
-            </MenuList>
-
-          </Menu>
+            <Text fontSize='30px'>Our Exclusive Menu</Text> 
+            <Menu>
+              <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+                {title}
+              </MenuButton>
+              <MenuList>
+                <MenuItem type='button' onClick={(e) => {e.preventDefault(); setMenuItem('starters'); }}>Starter</MenuItem>
+                <MenuItem type='button'  onClick={(e) => {e.preventDefault();  setMenuItem('mainCourse'); }}>Main Course</MenuItem>
+                <MenuItem type='button'  onClick={(e) => {e.preventDefault();  setMenuItem('dessert'); }}>Dessert</MenuItem>
+              </MenuList>
+            </Menu>
           </Flex>
 
-            <Flex flexWrap="wrap" justifyContent="center" alignItems="center">
-              {displayItems.map((item) => (
-                <MotionBox p={4} borderWidth={1} borderRadius="md" boxShadow="md" key={item.name} w='300px' m={2} sx={{ textAlign: 'center' }} whileFocus={{scale: 1.05}} animate={{scale: 1}}>
-                  <Image src='https://images.pexels.com/photos/19902252/pexels-photo-19902252.jpeg' width='300px' height='300px'></Image>
-                  <Heading fontSize='20px'>{item.name}</Heading>
-                  <p>{item.description}</p>
-                  <Flex justify='space-between' align='center' w='80%' mx='auto'> 
-                    <p>Price: ${item.price}</p>
-                    <p>Type: {item.type}</p>
-                  </Flex>
-                </MotionBox>
-              ))}
-            </Flex>
+          <Flex flexWrap="wrap" justifyContent="center" alignItems="center">
+            {displayItems.map((item) => (
+              <Box p={4} borderWidth={1} borderRadius="md" boxShadow="md" key={item.name} w='300px' m={2} sx={{ textAlign: 'center' }}>
+                <Image src={item.image_url} width='300px' height='300px'></Image>
+                <Heading fontSize='20px'>{item.name}</Heading>
+                <p>{item.description}</p>
+                <Flex justify='space-between' align='center' w='80%' mx='auto'>
+                  <p>Price: ${item.price}</p>
+                  <p>Type: <span style={item.type === 'veg' ? { color: 'green' } : { color: 'red' }}>{item.type}</span></p>
+                </Flex>
+              </Box>
+            ))}
+          </Flex>
 
         </Box>)}
     </>

@@ -1,12 +1,14 @@
-import { Button, Box, Flex, HStack, Image, DrawerOverlay, DrawerCloseButton, DrawerBody, DrawerHeader, Drawer, useDisclosure, DrawerContent } from '@chakra-ui/react'
+import { Button, Box, Flex, HStack, Image, DrawerOverlay, DrawerCloseButton, DrawerBody, DrawerHeader, Drawer, useDisclosure, DrawerContent ,Menu,MenuList, MenuButton, MenuItem} from '@chakra-ui/react'
 import {Link} from 'react-router-dom'
 
 interface NavbarProps {
     onClickAbout: () => void;
     onClickReserve: ()=> void;
+    onClickMenu: ()=> void;
+    setTheme: (theme: string) => void;
 }
 
-function Navbar({onClickAbout, onClickReserve}: NavbarProps){
+function Navbar({onClickAbout, onClickReserve, setTheme, onClickMenu}: NavbarProps){
     const style = {
         ':hover': {
             cursor: 'pointer'
@@ -19,11 +21,12 @@ function Navbar({onClickAbout, onClickReserve}: NavbarProps){
             zIndex={999}
             left={0}
             width='100%'
-            height='10vh'
+            height='11vh'
+
             py={4}
             backgroundColor='rgba(0, 0, 0, 1)'>
             <Flex justifyContent='space-evenly' alignItems='center'>
-                <Image src='/title.png' w='20%' sx={style}>
+                <Image src='/title.png' w='30%' sx={style} minW='200px'>
                 </Image>
                 <HStack>
                     <Button onClick={onOpen} variant='outline' colorScheme='yellow' size='sm'>
@@ -38,9 +41,15 @@ function Navbar({onClickAbout, onClickReserve}: NavbarProps){
                                 <Box display="flex" flexDirection="column" gap={2}>
                                     <Button variant="ghost" onClick={onClose} as={Link} to='/'>Home</Button>
                                     <Button variant="ghost" onClick={() => { onClickAbout(); onClose(); }}>About Us</Button>
-                                    <Button variant="ghost" onClick={onClose}>Contact Us</Button>
-                                    <Button variant="ghost" onClick={onClose} as={Link} to='/menu'>Our Menu</Button>
+                                    <Button variant="ghost" onClick={() => { onClickMenu(); onClose(); }}>Our Menu</Button>
                                     <Button variant="ghost" onClick={() => { onClickReserve(); onClose(); }}>Reserve a Table</Button>
+                                    <Menu>
+                                        <MenuButton as={Button} variant='ghost'>Change Theme</MenuButton>
+                                        <MenuList display='flex' flexDirection='column' p={2}>
+                                            <MenuItem  onClick={() => {setTheme('light'); onClose();}}>Light Mode</MenuItem>
+                                            <MenuItem  onClick={() => {setTheme('dark'); onClose();}}>Dark Mode</MenuItem>
+                                        </MenuList>
+                                    </Menu>
                                 </Box>
                             </DrawerBody>
                         </DrawerContent>
