@@ -37,6 +37,7 @@ const Testimonials = ({menuRef} : TestimonialsProp) => {
     backgroundPosition='center'
     backgroundRepeat='no-repeat'
     backgroundSize='cover'
+    //normal what codes are used for managing the background image
    >
     <Box backdropFilter='blur(20px)'>
     <Swiper
@@ -45,9 +46,11 @@ const Testimonials = ({menuRef} : TestimonialsProp) => {
         modules={[Autoplay]}
         loop={true}
         autoplay={{delay: 3000}}
+        //this is a new library used for sweep functions
         >
           {testimonials.map((t,i) => (
             <SwiperSlide key={i}>
+              {/* you need to remember this while doing or setting up swiper  */}
               <VStack py={8}>
                 <Avatar/>
                 <Text color='white' fontSize='xl' fontWeight='bold'>{t.name}</Text>

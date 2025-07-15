@@ -32,6 +32,7 @@ const SubMenu = ({ theme, setMenuItem, menuItem }: SubMenuProps) => {
       <Flex direction='row' justify='center' align='center' flexWrap='wrap' w='100%' p={4} gap={5} >
         {items.map((details, index) => {
           const [mouseOn, setMouseOn] = useState<boolean>(false)
+          // if you want to make a function or a particular variable for separate components, then write it here
           return(
             <>
               <Box key={index} border='1px solid black' zIndex={99} textAlign='center' flexWrap='wrap' maxW='300px' w={{ base: "100%", sm: "80%", md: "45%", lg: "30%" }} transition='all 0.25s ease-in-out'
@@ -50,16 +51,18 @@ const SubMenu = ({ theme, setMenuItem, menuItem }: SubMenuProps) => {
                 }}
                 onMouseLeave={() => {
                   setMouseOn(false)
+                  //function to change the var state
                 }}>
                 <AspectRatio ratio={9 / 16}>
-
+                {/* aspect ratio is used to fit the image there  */}
                   <Image w='100%' src={details.src} objectFit='cover'></Image>
                 </AspectRatio>
                 {mouseOn && <Box position='absolute' h='100%' w='100%' top={0} left={0} display='flex' justifyContent='center' alignItems='center' color='white' backdropFilter='blur(10px)'
                 opacity={0}
                 transition='opacity 0.3s ease-in-out'
-                _groupHover={{ opacity: 1 }}
-                pointerEvents='none'>
+                _groupHover={{ opacity: 1 }}//group hover is used so that you can link the parent with that and have functions linked with it
+                pointerEvents='none' //it is here so that we dont click on the other box above the div
+                >
                   <Heading>{details.thing}</Heading>
                 </Box>}
 

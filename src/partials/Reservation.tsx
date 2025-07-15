@@ -21,6 +21,7 @@ const Reservation = ({ reserveRef }: ReservationProps) => {
                 <Text fontSize="lg" textAlign="center" color="white" mb={2}>
                     Book your table in advance and skip the wait.
                 </Text>
+                {/* you can use the Vstack and hstack but again its okay to use flex */}
                 <Flex flexDirection='column' h='50vh' w='80%' minW='300px'>
                     <form action="">
                         <Flex justify='space-between' align='center'>

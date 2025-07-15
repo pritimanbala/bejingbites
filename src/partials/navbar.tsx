@@ -14,7 +14,7 @@ function Navbar({onClickAbout, onClickReserve, setTheme, onClickMenu}: NavbarPro
             cursor: 'pointer'
         }
     }
-    const { isOpen, onOpen, onClose } = useDisclosure();
+    const { isOpen, onOpen, onClose } = useDisclosure(); //a custom hook required for your drawer
     return (
         <Box position="fixed"
             top={0}
@@ -22,7 +22,6 @@ function Navbar({onClickAbout, onClickReserve, setTheme, onClickMenu}: NavbarPro
             left={0}
             width='100%'
             height='11vh'
-
             py={4}
             backgroundColor='rgba(0, 0, 0, 1)'>
             <Flex justifyContent='space-evenly' alignItems='center'>
@@ -32,7 +31,10 @@ function Navbar({onClickAbout, onClickReserve, setTheme, onClickMenu}: NavbarPro
                     <Button onClick={onOpen} variant='outline' colorScheme='yellow' size='sm'>
                         Open
                     </Button>
-                    <Drawer placement='right' onClose={onClose} isOpen={isOpen}>
+                    <Drawer placement='right' onClose={onClose} isOpen={isOpen}> 
+                        {/* you can just import the component and use the things  */}
+                        {/* but remember the things in chakra docs, the components they are using has some radix components thats why every that doesnt work */}
+                        {/* so you have to search the things like Drawer Overlay and things like this to use  */}
                         <DrawerOverlay />
                         <DrawerContent>
                             <DrawerCloseButton></DrawerCloseButton>

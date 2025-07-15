@@ -9,10 +9,10 @@ const HeroSection = ({onClickMenu} : HeroProp) => {
     return (
 
         <Flex alignItems='center'
-            justifyContent='center'
+            justifyContent='center'     
             backgroundSize='cover'
             backgroundPosition='center'
-            backgroundRepeat='no-repeat'
+            backgroundRepeat='no-repeat'        //the thing which you have to remember when you are putting any background image
             flexDirection='column'
             backgroundImage="url('https://images.pexels.com/photos/2403392/pexels-photo-2403392.jpeg')"
             h='100vh'

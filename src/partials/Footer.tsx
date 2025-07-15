@@ -13,9 +13,8 @@ const Footer = () => {
         gap={8}
         flexWrap="wrap"
       >
-        {/* Company Info */}
         <VStack align="flex-start" spacing={3}>
-          <Text fontSize="lg" fontWeight="bold">
+          <Text fontSize="lg" fontWeight="bold">   {/*here we are using Vstack and hstack which mimics the grid format*/}
             Beijing Bites
           </Text>
           <HStack align="flex-start">
@@ -34,7 +33,6 @@ const Footer = () => {
           </HStack>
         </VStack>
 
-        {/* Opening Hours */}
         <VStack align="flex-start" spacing={3}>
           <HStack>
             <FaClock />
@@ -44,7 +42,6 @@ const Footer = () => {
           <Text>Sat – Sun: 12:00 PM – 12:00 AM</Text>
         </VStack>
 
-        {/* Social Media */}
         <VStack align="flex-start" spacing={3}>
           <Text fontSize="lg" fontWeight="bold">Follow Us</Text>
           <HStack spacing={4}>
@@ -65,7 +62,7 @@ const Footer = () => {
       </Flex>
 
       <Text textAlign="center" fontSize="sm" mt={10} opacity={0.7}>
-        © 2025 Beijing Bites. All rights reserved.
+        2025 Beijing Bites. All rights reserved.
       </Text>
     </Box>
   );
